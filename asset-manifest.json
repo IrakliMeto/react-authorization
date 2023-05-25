@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-authorization/static/css/main.39833637.css",
+    "main.js": "/react-authorization/static/js/main.75c82db6.js",
+    "index.html": "/react-authorization/index.html",
+    "main.39833637.css.map": "/react-authorization/static/css/main.39833637.css.map",
+    "main.75c82db6.js.map": "/react-authorization/static/js/main.75c82db6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.39833637.css",
+    "static/js/main.75c82db6.js"
+  ]
+}
