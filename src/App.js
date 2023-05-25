@@ -20,7 +20,7 @@ function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path='/react-authorization' element={<Root />}>
+      <Route path='react-authorization' element={<Root />}>
         <Route
           path='login'
           element={!account ? <Login /> : <Navigate to='/react-authorization/home' />}
