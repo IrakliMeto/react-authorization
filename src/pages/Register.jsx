@@ -3,7 +3,6 @@ import Cookies from 'js-cookie';
 import { validateRegister } from '../validate/ValidateRegister';
 import { useNavigate } from 'react-router-dom';
 
-import './Form.scss';
 import Input from '../components/Input';
 
 import { useFormik } from 'formik';
@@ -40,7 +39,7 @@ export default function Register() {
       } else {
         Cookies.set('formData', JSON.stringify([values]));
       }
-      navigate('/login', { replace: true });
+      navigate('/react-authorization/login', { replace: true });
     },
   });
 

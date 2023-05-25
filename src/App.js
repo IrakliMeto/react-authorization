@@ -1,5 +1,5 @@
 import './App.css';
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useState } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -20,10 +20,19 @@ function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path='' element={<Root />}>
-        <Route path='/login' element={!account ? <Login /> : <Navigate to='/home' />} />
-        <Route path='/register' element={!account ? <Register /> : <Navigate to='/home' />} />
-        <Route path='/home' element={account ? <Home /> : <Navigate to='/login' />} />
+      <Route path='/react-authorization' element={<Root />}>
+        <Route
+          path='/react-authorization/login'
+          element={!account ? <Login /> : <Navigate to='/react-authorization/home' />}
+        />
+        <Route
+          path='/react-authorization/register'
+          element={!account ? <Register /> : <Navigate to='/react-authorization/home' />}
+        />
+        <Route
+          path='/react-authorization/home'
+          element={account ? <Home /> : <Navigate to='/react-authorization/login' />}
+        />
       </Route>
     )
   );

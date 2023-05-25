@@ -34,7 +34,7 @@ export default function Login() {
 
         if (accountMatch) {
           setErrorMessage(false);
-          navigate('/home', { replace: true });
+          navigate('/react-authorization/home', { replace: true });
           isLoggedContext.setAccount(accountMatch);
         } else {
           setErrorMessage(true);

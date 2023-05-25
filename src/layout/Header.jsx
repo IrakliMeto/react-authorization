@@ -12,8 +12,8 @@ export default function Header() {
       <nav className='navigation'>
         {isLoggedContext.account ? null : (
           <>
-            <Link to='/login'>Login</Link>
-            <Link to='/register'>Register</Link>
+            <Link to='/react-authorization/login'>Login</Link>
+            <Link to='/react-authorization/register'>Register</Link>
           </>
         )}
       </nav>
