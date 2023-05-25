@@ -22,15 +22,15 @@ function App() {
     createRoutesFromElements(
       <Route path='/react-authorization' element={<Root />}>
         <Route
-          path='/react-authorization/login'
+          path='login'
           element={!account ? <Login /> : <Navigate to='/react-authorization/home' />}
         />
         <Route
-          path='/react-authorization/register'
+          path='register'
           element={!account ? <Register /> : <Navigate to='/react-authorization/home' />}
         />
         <Route
-          path='/react-authorization/home'
+          path='home'
           element={account ? <Home /> : <Navigate to='/react-authorization/login' />}
         />
       </Route>
