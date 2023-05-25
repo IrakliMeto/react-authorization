@@ -1,24 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { createContext, useEffect, useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+  Navigate,
+} from 'react-router-dom';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Root from './layout/Root';
+import Home from './pages/Home';
+
+export const createIsLoggedContext = createContext();
 
 function App() {
+  const [account, setAccount] = useState(null);
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path='' element={<Root />}>
+        <Route path='/login' element={!account ? <Login /> : <Navigate to='/home' />} />
+        <Route path='/register' element={!account ? <Register /> : <Navigate to='/home' />} />
+        <Route path='/home' element={account ? <Home /> : <Navigate to='/login' />} />
+      </Route>
+    )
+  );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <createIsLoggedContext.Provider value={{ account, setAccount }}>
+      <div className='App'>
+        <RouterProvider router={router} />
+      </div>
+    </createIsLoggedContext.Provider>
   );
 }
 
