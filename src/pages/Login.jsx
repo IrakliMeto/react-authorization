@@ -39,28 +39,28 @@ export default function Login() {
     onSubmit: (values) => {
       const formData = Cookies.get('formData');
 
-      if (formData) {
-        const parsedFormData = JSON.parse(formData);
-        const accountMatch = parsedFormData.find((item) => {
-          return values.email === item.email && values.password === item.password;
-        });
-
-        if (accountMatch) {
-          console.log('jemala');
-
-          setErrorMessage(false);
-          navigate('/react-authorization/home');
-
-          localStorage.setItem('loggedInUser', JSON.stringify(accountMatch));
-          isLoggedContext.setAccount(accountMatch);
-        } else {
-          isLoggedContext.setAccount(null);
-          setErrorMessage(true);
-        }
-      } else {
+      if (!formData) {
         isLoggedContext.setAccount(null);
         setErrorMessage(true);
+        return;
       }
+
+      const parsedFormData = JSON.parse(formData);
+      const accountMatch = parsedFormData.find((item) => {
+        return values.email === item.email && values.password === item.password;
+      });
+
+      if (!accountMatch) {
+        isLoggedContext.setAccount(null);
+        setErrorMessage(true);
+        return;
+      }
+
+      setErrorMessage(false);
+      navigate('/react-authorization/home');
+
+      localStorage.setItem('loggedInUser', JSON.stringify(accountMatch));
+      isLoggedContext.setAccount(accountMatch);
     },
   });
 
