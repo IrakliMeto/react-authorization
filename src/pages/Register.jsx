@@ -7,6 +7,8 @@ import Input from '../components/Input';
 
 import { useFormik } from 'formik';
 
+import './Form.scss';
+
 export default function Register() {
   const navigate = useNavigate();
 
@@ -90,8 +92,8 @@ export default function Register() {
         error={formik.errors.repeatPassword}
       />
 
-      {errorMessage ? <p>Email exist</p> : ''}
-      <input type='submit' value='Submit' />
+      {errorMessage ? <p className='error'>Email exist</p> : ''}
+      <input className='submit' type='submit' value='Submit' />
     </form>
   );
 }

@@ -7,6 +7,11 @@ import { createIsLoggedContext } from '../App';
 export default function Header() {
   const isLoggedContext = useContext(createIsLoggedContext);
 
+  const handleLogout = () => {
+    localStorage.removeItem('loggedInUser');
+    isLoggedContext.setAccount(null);
+  };
+
   return (
     <header>
       <nav className='navigation'>
@@ -16,6 +21,12 @@ export default function Header() {
             <Link to='/react-authorization/register'>Register</Link>
           </>
         )}
+
+        {isLoggedContext.account ? (
+          <button className='logout' onClick={handleLogout}>
+            Log out
+          </button>
+        ) : null}
       </nav>
     </header>
   );
